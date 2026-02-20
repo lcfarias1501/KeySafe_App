@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+
+/* ============================================
+   COLOR VARIABLES - Light & Dark Themes
+   ============================================ */
+@layer base {
+
+  :root {
+    /* Light Theme - Security & Trust Colors */
+    --background: 240 10% 98%;
+    --foreground: 240 10% 10%;
+
+    /* Primary - Deep Blue (Trust, Security) */
+    --primary: 217 91% 35%;
+    --primary-hover: 217 91% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Slate Gray */
+    --secondary: 215 16% 47%;
+    --secondary-hover: 215 16% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Accent - Teal (Action, Success) */
+    --accent: 173 80% 40%;
+    --accent-hover: 173 80% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Surfaces */
+    --card: 0 0% 100%;
+    --card-hover: 240 10% 97%;
+    --popover: 0 0% 100%;
+
+    /* Borders */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 35%;
+
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --error: 0 84% 60%;
+    --info: 199 89% 48%;
+
+    /* Muted Elements */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Destructive Actions */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Sidebar/Navigation */
+    --sidebar: 240 5% 96%;
+    --sidebar-hover: 240 5% 92%;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+    /* Password Strength Colors */
+    --strength-weak: 0 84% 60%;
+    --strength-medium: 38 92% 50%;
+    --strength-strong: 142 76% 36%;
+
+    /* Radius */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Theme - Security & Trust Colors */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    /* Primary - Bright Blue (Trust, Security) */
+    --primary: 217 91% 60%;
+    --primary-hover: 217 91% 55%;
+    --primary-foreground: 222 47% 11%;
+
+    /* Secondary - Light Slate */
+    --secondary: 215 20% 65%;
+    --secondary-hover: 215 20% 60%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Accent - Teal */
+    --accent: 173 80% 50%;
+    --accent-hover: 173 80% 45%;
+    --accent-foreground: 222 47% 11%;
+
+    /* Surfaces */
+    --card: 222 47% 14%;
+    --card-hover: 222 47% 16%;
+    --popover: 222 47% 14%;
+
+    /* Borders */
+    --border: 217 33% 24%;
+    --input: 217 33% 24%;
+    --ring: 217 91% 60%;
+
+    /* Status Colors */
+    --success: 142 76% 45%;
+    --warning: 38 92% 60%;
+    --error: 0 84% 70%;
+    --info: 199 89% 58%;
+
+    /* Muted Elements */
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Destructive Actions */
+    --destructive: 0 84% 70%;
+    --destructive-foreground: 222 47% 11%;
+
+    /* Sidebar/Navigation */
+    --sidebar: 222 47% 13%;
+    --sidebar-hover: 222 47% 17%;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+
+    /* Password Strength Colors */
+    --strength-weak: 0 84% 70%;
+    --strength-medium: 38 92% 60%;
+    --strength-strong: 142 76% 50%;
+  }
+}
+
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    transition: background-color 0.3s, color 0.3s;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+}
+
+/*
+==========================
+  CONTAINER DO BOOTSTRAP
+==========================
+*/
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}

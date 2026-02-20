@@ -1,0 +1,50 @@
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id                Int        @unique @default(autoincrement())
+  email             String     @unique
+  password          String     
+  username          String     
+  folders           Folder[]
+  passwords         Password[]
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+}
+
+model Folder {
+  id        Int        @id @default(autoincrement())
+  name      String     
+  userId    Int
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  passwords Password[] 
+  createdAt DateTime   @default(now())
+
+  @@unique([name, userId]) 
+}
+
+model Password {
+  id             Int      @id @default(autoincrement())
+  title          String   
+  siteUrl        String?
+  description    String?  
+  password       String   @default("")
+  
+  userId         Int
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  folderId       Int?     
+  folder         Folder?  @relation(fields: [folderId], references: [id], onDelete: SetNull)
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
