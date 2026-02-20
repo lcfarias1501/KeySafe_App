@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ============================================
+   DASHBOARD LAYOUT
+   ============================================ */
+.dashboard-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: hsl(var(--background));
+  font-family: var(--font-body);
+}
+
+/* ─── Sidebar base ─── */
+.sidebar {
+  height: 100vh;
+  background: hsl(var(--sidebar));
+  color: hsl(var(--foreground));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  border-right: 1px solid hsl(var(--border));
+  flex-shrink: 0;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* ─── Open state ─── */
+.sidebar--open {
+  width: 280px;
+  padding: 28px 20px;
+  align-items: stretch;
+}
+
+/* ─── Closed state: thin strip with just the toggle ─── */
+.sidebar--closed {
+  width: 56px;
+  padding: 16px 0;
+  align-items: center;
+}
+
+/* ─── Toggle Button ─── */
+.toggle-btn {
+  width: 36px;
+  height: 36px;
+  background: hsl(var(--card));
+  color: hsl(var(--muted-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+}
+
+.toggle-btn:hover {
+  background: hsl(var(--sidebar-hover));
+  color: hsl(var(--foreground));
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+/* ─── Sidebar inner content (fades out when closed) ─── */
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.sidebar--open .sidebar-content {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.sidebar--closed .sidebar-content {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ─── Brand ─── */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+  padding-left: 4px;
+  white-space: nowrap;
+}
+
+.sidebar-brand-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  /* background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent))); */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: hsl(var(--primary-foreground));
+}
+
+.sidebar-brand-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  letter-spacing: 0.3px;
+}
+
+/* ─── User Section ─── */
+.user-section {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.2s;
+}
+
+.user-section:hover {
+  background: hsl(var(--card-hover));
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: hsl(var(--primary-foreground));
+  flex-shrink: 0;
+}
+
+.user-info {
+  overflow: hidden;
+}
+
+.user-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-email {
+  font-size: 11px;
+  color: hsl(var(--muted-foreground));
+  margin: 2px 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─── Action Button ─── */
+.action-button {
+  width: 100%;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  padding: 11px 16px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 28px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px hsl(var(--primary) / 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.action-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.2s;
+}
+
+.action-button:hover::before {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.action-button:active {
+  transform: scale(0.98);
+}
+
+/* ─── Nav Title ─── */
+.nav-title {
+  font-size: 10px;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding: 0 8px;
+  white-space: nowrap;
+  opacity: 0.6;
+}
+
+/* ─── Folder List ─── */
+.folder-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.folder-item {
+  padding: 9px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: hsl(var(--muted-foreground));
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 400;
+  transition: background 0.15s, color 0.15s;
+}
+
+.folder-item:hover {
+  background: hsl(var(--sidebar-hover));
+  color: hsl(var(--foreground));
+}
+
+.folder-item.active {
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+}
+
+.folder-item svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* ─── Logout Section ─── */
+.logout-section {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid hsl(var(--border));
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  width: 100%;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.logout-button:hover {
+  background: hsl(var(--destructive) / 0.08);
+  color: hsl(var(--destructive));
+}
+
+/* ─── Main Content ─── */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-content h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}

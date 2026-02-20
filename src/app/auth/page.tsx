@@ -49,7 +49,7 @@ export default function AuthPage() {
         } catch (error) {
             alert(error)
         } finally {
-            redirect('/')
+            redirect('/dashboard')
         }
     };
 

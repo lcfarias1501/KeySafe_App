@@ -1,6 +1,4 @@
 @import "tailwindcss";
-
-
 /* ============================================
    COLOR VARIABLES - Light & Dark Themes
    ============================================ */
@@ -66,6 +64,10 @@
 
     /* Radius */
     --radius: 0.5rem;
+
+    /* Fonts */
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
   }
 
   .dark {
@@ -144,15 +146,18 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     transition: background-color 0.3s, color 0.3s;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
   }
 }
 
-/*
-==========================
-  CONTAINER DO BOOTSTRAP
-==========================
-*/
+
+/* ============================================
+   CONTAINER
+   ============================================ */
 .container {
   width: 100%;
   margin-left: auto;
@@ -170,9 +175,7 @@
 }
 
 @media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
+  .container { max-width: 768px; }
 }
 
 @media (min-width: 1024px) {
@@ -184,13 +187,9 @@
 }
 
 @media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
+  .container { max-width: 1280px; }
 }
 
 @media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
+  .container { max-width: 1536px; }
 }

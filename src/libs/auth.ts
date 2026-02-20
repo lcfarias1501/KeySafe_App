@@ -33,3 +33,17 @@ export async function login(user: any) {
 export async function logout() {
     (await cookies()).set("session", "", { expires: new Date(0) });
 }
+
+export async function getSessionUser() {
+  try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get("session")?.value;
+
+    if (!token) return null;
+
+    const session = await decryptSession(token);
+    return session; 
+  } catch (error) {
+    return null;
+  }
+}

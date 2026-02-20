@@ -1,16 +1,16 @@
 import type { Metadata } from "next"
-import { Roboto } from "next/font/google"
+import { Roboto, Syne } from "next/font/google"
 import '@/styles/globals.css'
 import { ThemeProvider } from "@/providers/theme-provider"
 
-
-const robotoSans = Roboto({
-  variable: "--font-geist-sans",
+const syne = Syne({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
+  weight: "400"
 })
 
 export const metadata: Metadata = {
-  title: "Sabor Local",
+  title: "KeySafe",
   description: "Ache seu restaurante preferido",
 }
 
@@ -19,7 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="pt" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${robotoSans.variable} antialiased`}
+        className={`${syne.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class" // Diz-lhe para usar a classe ".dark" no <html>
